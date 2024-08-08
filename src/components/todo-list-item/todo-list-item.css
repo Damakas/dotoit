@@ -1,0 +1,35 @@
+.wrapper_list{
+    display: flex;
+    flex-direction: column;
+}
+.list_container{
+    display: flex;
+    justify-content:space-between ;
+    gap: 10px;
+    padding: 10px 0;
+}
+    .list_container-inner{
+        display: flex;
+        gap:10px
+}
+.lined_text{
+    text-decoration: line-through;
+    opacity: 0.55;
+}
+.value_text{
+    border: none;
+}
+.btn_complete{
+    background-color: green;
+    box-shadow: 1px 1px 2px 0 ;
+}
+.btn_cancel{
+    background-color: orange;
+    box-shadow: 1px 1px 2px 0 ;
+}
+.btn_upd{
+    background-color: rgb(172, 206, 78);
+}
+.btn_del{
+    background-color:red
+}

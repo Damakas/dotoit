@@ -1,0 +1,39 @@
+.todo-add-info input {
+ text-align: center;
+width: 500px;
+}
+
+.todo-add-info input:focus{
+  border:1px solid blue;
+  box-shadow:  1px 1px 2px 0 blue;
+}
+
+.wrapper {
+    display: grid;
+     justify-content: center;
+    margin-top: 50px;
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.wrapper h1 {
+    text-align: center;
+    margin-bottom: 20px;
+   }
+.todo-add-info {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    }
+.btn_base{
+width: 110px;
+height: 45px;
+border-radius: 5px;
+border: none;
+color: white;
+text-align: center;
+}
+.btn_add{
+  background-color: rgb(96, 96, 253);
+  }
+   
