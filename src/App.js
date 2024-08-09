@@ -11,11 +11,11 @@ class App extends Component {
 
     this.state = {
       data: [
-        { name: 'Learn HTML', stage: true, id: 1 },
-        { name: 'LearnCss', stage: false, id: 2 },
-        { name: 'Learn JavaScript', stage: false, id: 3 },
+        { name: 'Learn HTML', stage: false, isToggled: true, id: 1 },
+        { name: 'LearnCss', stage: false, isToggled: false, id: 2 },
+        { name: 'Learn JavaScript', stage: false, isToggled: false, id: 3 },
       ],
-      filter: 'active'
+      filter: 'all'
     }
     this.maxId = 4;
 
@@ -29,6 +29,23 @@ class App extends Component {
 
     })
   }
+  // onStage = () => {
+  //   this.setState(({ stage, isToggled }) => ({
+  //     stage: !stage,
+  //     isToggled: !isToggled
+  //   }));
+  // }
+  onStage = (id, prop) => {
+    this.setState(({ data }) => ({
+      data: data.map(item => {
+        if (item.id === id) {
+          return { ...item, [prop]: !item[prop] }
+        }
+        return item;
+      })
+    }))
+  }
+
 
 
   addTodo = (name) => {
@@ -55,24 +72,33 @@ class App extends Component {
     }
   }
 
+  onFilterSelect = (filter) => {
+    this.setState({ filter });
+  }
+
+
+
 
   render() {
 
     const { data, filter } = this.state;
-    const filterData = this.filterBtns((data), filter)
+    const filterData = this.filterBtns((data), filter);
+    const filterLeft = data.filter(item => !item.stage).length
 
     return (
       <div className='App' >
         <TodoAdd onAdd={this.addTodo} />
         <div className='todos-left'>
-          <TodoLeftList number={data.length} />
+          <TodoLeftList filterLeft={filterLeft} />
         </div>
         <div className='filter-btns'>
-          <FilterBtns />
+          <FilterBtns filter={filter} onFilterSelect={this.onFilterSelect} />
         </div>
         <div>
           <TodoList data={filterData}
             onDelete={this.delteItem}
+            onStage={this.onStage}
+            onStageBtn={this.onStageBtn}
           />
         </div>
       </div>
